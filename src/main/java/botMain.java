@@ -13,7 +13,7 @@ import javax.security.auth.login.LoginException;
 public class botMain extends ListenerAdapter
 {
     public static void main(String[] args) throws LoginException {
-        JDA jda = JDABuilder.createDefault("MTEzNTk1MTQzNDI0NDk1MjE5Ng.G_sUIo.oQAlqK5oYvIrmxV0BgC7s1a6un9F4nQ4xCX3LA").build();
+        JDA jda = JDABuilder.createDefault("Token").build();
                 //.enableIntents(GatewayIntent.MESSAGE_CONTENT) // enables explicit access to message.getContentDisplay()
 
         //You can also add event listeners to the already built JDA instance
