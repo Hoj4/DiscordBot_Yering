@@ -5,6 +5,8 @@ import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+import java.util.List;
+
 public class MyMessageListener extends ListenerAdapter {
 
     @Override
@@ -13,15 +15,21 @@ public class MyMessageListener extends ListenerAdapter {
             Message msg = event.getMessage();
             MessageChannel mc = event.getChannel();
             String str = msg.getContentRaw();
-            String order = str.substring(0, 7);
-            User usr = event.getJDA().getUserById(str.substring(8));
+            String order = str.substring(0, 3);
 
-            if (order.equals("!GetAva") && usr != null) {
-                mc.sendMessage("A").queue();
-                System.out.println(usr.getId() + "1");
-                System.out.println(usr.getName() + "2");
+            if (order.equals("!사진")) {
+                List<User> mentionedUsers = event.getMessage().getMentionedUsers();
+                if (mentionedUsers.isEmpty()) {
+                    System.out.println("언급된 사용자가 없습니다.");
+                    return;
+                }
 
-                mc.sendMessage(usr.getAvatarUrl()).queue();
+                User mentionedUser = mentionedUsers.get(0);
+
+                System.out.println(mentionedUser.getId() + "1");
+                System.out.println(mentionedUser.getName() + "2");
+
+                mc.sendMessage(mentionedUser.getAvatarUrl()).queue();
                 System.out.println("성공");
             } else {
                 System.out.println("해당 사용자를 찾을 수 없습니다.");
