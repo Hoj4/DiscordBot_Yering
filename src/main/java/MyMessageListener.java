@@ -7,6 +7,9 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import javax.security.auth.login.LoginException;
+import java.time.LocalDate;
+
 
 public class MyMessageListener extends ListenerAdapter {
 
@@ -26,19 +29,18 @@ public class MyMessageListener extends ListenerAdapter {
                 }
 
                 User mentionedUser = mentionedUsers.get(0);
-
-                System.out.println(mentionedUser.getId() + "1");
-                System.out.println(mentionedUser.getName() + "2");
-
                 mc.sendMessage(mentionedUser.getAvatarUrl()).queue();
-                System.out.println("성공");
-            } else {
-                System.out.println("해당 사용자를 찾을 수 없습니다.");
+            }
+            if (order.equals("!은비")) {
+                String result = getSchedule(LocalDate.now());
+                mc.sendMessage(result).queue();
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
 
         if (event.isFromType(ChannelType.PRIVATE)) {
             System.out.printf("[PM] %s: %s\n", event.getAuthor().getName(), event.getMessage().getContentDisplay());
@@ -46,6 +48,18 @@ public class MyMessageListener extends ListenerAdapter {
             System.out.printf("[%s][%s] %s: %s\n", event.getGuild().getName(),
                     event.getTextChannel().getName(), event.getMember().getEffectiveName(),
                     event.getMessage().getContentDisplay());
+        }
+    }
+
+    private String getSchedule(LocalDate event) {
+        LocalDate startDate = LocalDate.of(2023, 8, 5);
+        int dayCount = (int) startDate.until(event).getDays();
+        int remainder = dayCount % 3;
+
+        if (remainder == 0) {
+            return "은비는 오늘 당직입니다.";
+        } else {
+            return "은비는 오늘 오프입니다.";
         }
     }
 }
