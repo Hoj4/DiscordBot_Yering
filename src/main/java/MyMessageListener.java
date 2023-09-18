@@ -33,17 +33,13 @@ public class MyMessageListener extends ListenerAdapter {
             if (str.equals("!은비")) {
                 String result = getSchedule(LocalDate.now(), 1);
                 mc.sendMessage(result).queue();
-            }
-            else if (str.equals("!은비 내일")) {
+            } else if (str.equals("!은비 내일")) {
                 String result = getSchedule(LocalDate.now(), 2);
                 mc.sendMessage(result).queue();
-            }else if(str.equals("!은비 모레")) {
+            } else if(str.equals("!은비 모레")) {
                 String result = getSchedule(LocalDate.now(), 3);
                 mc.sendMessage(result).queue();
             }
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
