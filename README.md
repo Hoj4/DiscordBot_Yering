@@ -22,6 +22,7 @@
    ![image](https://github.com/Hoj4/Discord-Bot/assets/118800372/52aa7962-6a23-41d0-bc08-419cc4a3a86c)
 
 2. 친구의 당직, 오프 알림
-   - 2일근무-1일휴일 주기를 가진 친구의 근무, 휴무 여부를 오늘 날짜를 기준으로 하여 알려주는 기능
+   - 2일근무-1일휴일 주기를 가진 친구의 근무, 휴무 여부를 당직일과 오늘 날짜를 기준으로 계산하여 알려주는 기능
    - [[코드]](https://github.com/Hoj4/Discord-Bot/blob/master/src/main/java/MyMessageListener.java)<br>
-![image](https://github.com/Hoj4/Discord-Bot/assets/118800372/9ff7ccfe-e2b6-4e06-8f64-8570e2d082b2)
+![image](https://github.com/Hoj4/Discord-Bot/assets/118800372/afbdbfc6-e76f-46ce-b655-ddde83294ac5)
+
